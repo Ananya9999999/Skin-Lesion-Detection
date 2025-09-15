@@ -4,7 +4,7 @@ def db_connection():
     host= 'localhost',
     user='root',
     password= 'pass',
-    databse= 'skin_lesion_db'
+    database= 'skin_lesion_db'
   )
 def find_user(username):
     conn = get_db_connection()
