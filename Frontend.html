@@ -65,7 +65,6 @@
             <button type="submit">Login</button>
         </form>
          <div class="error" id="errorMsg"></div>
-    
         <form id="signupForm" class="hidden">
             <label for="signupUsername">Choose Username</label>
             <input type="text" id="signupUsername" required />
@@ -75,11 +74,9 @@
             <input type="password" id="signupConfirmPassword" required />
             <button type="submit">Sign Up</button>
         </form>
-
         <div class="error" id="errorMsg"></div>
         <div class="toggle-link" id="toggleAuthForm">Don't have an account? Sign Up</div>
-    </div>
-       
+    </div>   
     <div class="container hidden" id="mainSection">
         <h1>Detect Skin Lesion</h1>
         <form id="uploadForm" enctype="multipart/form-data">
@@ -109,7 +106,6 @@
             const username = document.getElementById('signupUsername').value.trim();
             const password = document.getElementById('signupPassword').value;
             const confirmPassword = document.getElementById('signupConfirmPassword').value;
-
             if (users[username]) {
                 errorMsg.textContent = 'Username already exists.';
                 return;
@@ -125,9 +121,8 @@
             users[username] = password;
             errorMsg.style.color = 'green';
             errorMsg.textContent = 'Signup successful! You can now log in.';
-            // Switch back to login form automatically after signup
             setTimeout(() => {
-                errorMsg.style.color = '#c92020'; // Reset error color
+                errorMsg.style.color = '#c92020'; 
                 toggleLink.click();
             }, 2000);
         };
@@ -147,15 +142,12 @@
                 errorMsg.textContent = '';
             }
         };
-        
        const uploadForm = document.getElementById('uploadForm');
         uploadForm.onsubmit = async function(e) {
             e.preventDefault();
             const resultDiv = document.getElementById('result');
             resultDiv.style.display = 'block';
             resultDiv.textContent = 'Processing...';
-
-            // In production, send the image to the backend server for analysis.
             setTimeout(() => {
                 resultDiv.textContent = 'Diagnosis: Melanoma risk is low (example).';
             }, 1800);
