@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skin Lesion Detection (Beginner)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #f8fbff; 
+            margin: 0; 
+            padding: 0; 
+        }
+        .container { 
+            max-width: 440px; 
+            margin: 40px auto; 
+            background: #fff; 
+            padding: 2em; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 16px #dbe7ef; 
+        }
+        h1 { 
+            color: #3183ac; text-align: center; 
+        }
+        label { margin-top: 1em; font-weight: 500; }
+        input, button { 
+            width: 100%; 
+            padding: 0.7em; 
+            margin-top: 0.3em; 
+            box-sizing: border-box; 
+            border-radius: 4px; 
+            border: 1px solid #dde5ed; 
+        }
+        button { 
+            background: #3183ac; 
+            color: white; 
+            border: none; 
+            margin-top: 1.2em; 
+            cursor: pointer; 
+            font-weight: 600; 
+        }
+        #result, #history { 
+            margin-top: 1.7em; 
+            background: #eaf5f7; 
+            color: #225c68; 
+            border-radius: 5px; 
+            padding: 0.8em; 
+        }
+        .error { 
+            color: #c92020; 
+            text-align: center; 
+            margin-top: 1em; 
+        }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container" id="loginSection">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="username">Username</label>
+            <input type="text" id="username" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+            <button type="submit">Login</button>
+        </form>
+         <div class="error" id="errorMsg"></div>
+    
+        <form id="signupForm" class="hidden">
+            <label for="signupUsername">Choose Username</label>
+            <input type="text" id="signupUsername" required />
+            <label for="signupPassword">Choose Password</label>
+            <input type="password" id="signupPassword" required />
+            <label for="signupConfirmPassword">Confirm Password</label>
+            <input type="password" id="signupConfirmPassword" required />
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <div class="error" id="errorMsg"></div>
+        <div class="toggle-link" id="toggleAuthForm">Don't have an account? Sign Up</div>
+    </div>
+       
+    <div class="container hidden" id="mainSection">
+        <h1>Detect Skin Lesion</h1>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <label for="imageInput">Upload Image</label>
+            <input type="file" id="imageInput" accept="image/*" required>
+            <button type="submit">Check Lesion</button>
+        </form>
+        <div id="result">Result will appear here.</div>
+        <div id="history"></div>
+    </div>
+    <script>  
+        const loginForm = document.getElementById('loginForm');
+        const errorMsg = document.getElementById('errorMsg');
+        loginForm.onsubmit = function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if(username === "demo" && password === "12345") {
+                document.getElementById('loginSection').classList.add('hidden');
+                document.getElementById('mainSection').classList.remove('hidden');
+            } else {
+                errorMsg.textContent = "Invalid username or password (try demo / 12345)";
+            }
+        };
+        signupForm.onsubmit = e => {
+            e.preventDefault();
+            const username = document.getElementById('signupUsername').value.trim();
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+
+            if (users[username]) {
+                errorMsg.textContent = 'Username already exists.';
+                return;
+            }
+            if (password !== confirmPassword) {
+                errorMsg.textContent = 'Passwords do not match.';
+                return;
+            }
+            if (password.length < 4) {
+                errorMsg.textContent = 'Password should be at least 4 characters.';
+                return;
+            }
+            users[username] = password;
+            errorMsg.style.color = 'green';
+            errorMsg.textContent = 'Signup successful! You can now log in.';
+            // Switch back to login form automatically after signup
+            setTimeout(() => {
+                errorMsg.style.color = '#c92020'; // Reset error color
+                toggleLink.click();
+            }, 2000);
+        };
+        const toggleLink = document.getElementById('toggleAuthForm');   
+        const loginFormDiv = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');       
+        toggleLink.onclick = () => {
+            if (loginFormDiv.classList.contains('hidden')) {
+                loginFormDiv.classList.remove('hidden');
+                signupForm.classList.add('hidden');
+                toggleLink.textContent = "Don't have an account? Sign Up";
+                errorMsg.textContent = '';
+            } else {
+                loginFormDiv.classList.add('hidden');
+                signupForm.classList.remove('hidden');
+                toggleLink.textContent = "Already have an account? Log In";
+                errorMsg.textContent = '';
+            }
+        };
+        
+       const uploadForm = document.getElementById('uploadForm');
+        uploadForm.onsubmit = async function(e) {
+            e.preventDefault();
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = 'Processing...';
+
+            // In production, send the image to the backend server for analysis.
+            setTimeout(() => {
+                resultDiv.textContent = 'Diagnosis: Melanoma risk is low (example).';
+            }, 1800);
+        }
+    </script>
+</body>
+</html>
