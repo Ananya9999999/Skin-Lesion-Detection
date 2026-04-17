@@ -1,33 +1,35 @@
-🩺 Skin Lesion Detection using Deep Learning
+<h1>🩺 Skin Lesion Detection using Deep Learning</h1>
 
 An AI-powered web application that classifies skin lesion images using a Convolutional Neural Network (CNN). This project aims to assist in the early detection of skin diseases by providing fast and automated image-based predictions.
 
 ⚠️ This project is for educational and research purposes only and is not a substitute for professional medical advice.
 
-🚀 Features
+<h2>🚀 Features</h2>
 
-📤 Upload skin lesion images
+- 📤 Upload skin lesion images
 
-🤖 Deep Learning-based classification (CNN)
+- 🤖 Deep Learning-based classification (CNN)
 
-🌐 Simple and responsive web interface
+- 🌐 Simple and responsive web interface
 
-⚡ Real-time prediction results
+- ⚡ Real-time prediction results
 
-🧠 TensorFlow/Keras model integration
+- 🧠 TensorFlow/Keras model integration
 
-🛠 Tech Stack
+<h2>🛠 Tech Stack</h2>
 
-Frontend: HTML, CSS
+- Frontend: HTML, CSS
 
-Backend: Flask (Python)
+- Backend: Flask (Python)
 
-Deep Learning: TensorFlow, Keras
+- Deep Learning: TensorFlow, Keras
 
-Other Tools: NumPy, OpenCV / PIL
+- Other Tools: NumPy, OpenCV / PIL
 
-📂 Project Structure
-```Skin-Lesion-Detection/
+<h2>📂 Project Structure</h2>
+
+```
+Skin-Lesion-Detection/
 │
 ├── static/               # CSS, images
 ├── templates/            # HTML files
@@ -37,7 +39,9 @@ Other Tools: NumPy, OpenCV / PIL
 ├── requirements.txt
 └── README.md
 ```
-⚙️ Installation & Setup
+
+<h2>⚙️ Installation & Setup</h2>
+
 ```1️⃣ Clone the repository
 git clone https://github.com/your-username/Skin-Lesion-Detection.git
 cd Skin-Lesion-Detection
@@ -46,7 +50,7 @@ cd Skin-Lesion-Detection
 ```python -m venv .venv```
 ```
 
-Activate it:
+<h3>Activate it:</h3>
 
 Windows
 ```
@@ -68,40 +72,41 @@ Open your browser and go to:
 ```
 http://127.0.0.1:5000/
 ```
-🧠 Model Information
 
-Model Type: Convolutional Neural Network (CNN)
+<h2>🧠 Model Information</h2>
 
-Framework: TensorFlow / Keras
+- Model Type: Convolutional Neural Network (CNN)
 
-Input: Skin lesion image
+- Framework: TensorFlow / Keras
 
-Output: Predicted lesion category
+- Input: Skin lesion image
+
+- Output: Predicted lesion category
 
 You can retrain the model using your own dataset for improved accuracy.
 
-📊 How It Works
+<h2>📊 How It Works</h2>
 
-User uploads an image.
+- User uploads an image.
 
-Image is preprocessed (resizing, normalization).
+- Image is preprocessed (resizing, normalization).
 
-The trained CNN model predicts the class.
+- The trained CNN model predicts the class.
 
-Prediction result is displayed on the web interface.
+- Prediction result is displayed on the web interface.
 
-🔮 Future Improvements
+<h2>🔮 Future Improvements</h2>
 
-Add confidence percentage display
+- Add confidence percentage display
 
-Improve UI/UX design
+- Improve UI/UX design
 
-Deploy using Heroku / Render / AWS
+- Deploy using Heroku / Render / AWS
 
-Add more skin disease classes
+- Add more skin disease classes
 
-Integrate Grad-CAM for model explainability
+- Integrate Grad-CAM for model explainability
 
-📌 Disclaimer
+<h3>📌 Disclaimer</h3>
 
 This application is intended for educational purposes only. It does not provide medical diagnosis. Always consult a qualified healthcare professional for medical advice.
